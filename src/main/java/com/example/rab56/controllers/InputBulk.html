@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<form method="POST" action="http://localhost:8080/getresultpairs"
+      modelAttribute="parameters">-->                                   <!--Для обычного bulk запроса-->
+<form method="POST" action="http://localhost:8080/getdbresultpairs"
+      modelAttribute="parameters">                                      <!--Для bulk запроса с использованием БД-->
+    <p>
+        <label>Число:</label>
+        <input type = "number" name="parameters[0].a" required>
+    </p>
+    <p>
+        <label>Число:</label>
+        <input type = "number" name="parameters[0].b" required>
+    </p>
+    <p>
+        <label>Число:</label>
+        <input type = "number" name="parameters[0].c" required>
+    </p>
+    <p>
+        <label>Число:</label>
+        <input type = "number" name="parameters[0].d" required>
+    </p><br/>
+    <!------------------------------------------------------------->
+
+    <p>
+        <label>Число:</label>
+        <input type = "number" name="parameters[1].a" required>
+    </p>
+    <p>
+        <label>Число:</label>
+        <input type = "number" name="parameters[1].b" required>
+    </p>
+    <p>
+        <label>Число:</label>
+        <input type = "number" name="parameters[1].c" required>
+    </p>
+    <p>
+        <label>Число:</label>
+        <input type = "number" name="parameters[1].d" required>
+    </p><br/>
+    <!------------------------------------------------------------->
+
+    <p>
+        <label>Число:</label>
+        <input type = "number" name="parameters[2].a" required>
+    </p>
+    <p>
+        <label>Число:</label>
+        <input type = "number" name="parameters[2].b" required>
+    </p>
+    <p>
+        <label>Число:</label>
+        <input type = "number" name="parameters[2].c" required>
+    </p>
+    <p>
+        <label>Число:</label>
+        <input type = "number" name="parameters[2].d" required>
+    </p><br/>
+    <!------------------------------------------------------------->
+
+    <p>
+        <label>Число:</label>
+        <input type = "number" name="parameters[3].a" required>
+    </p>
+    <p>
+        <label>Число:</label>
+        <input type = "number" name="parameters[3].b" required>
+    </p>
+    <p>
+        <label>Число:</label>
+        <input type = "number" name="parameters[3].c" required>
+    </p>
+    <p>
+        <label>Число:</label>
+        <input type = "number" name="parameters[3].d" required>
+    </p>
+    <input type = "submit" value = "Отправить">
+</form>
+</body>
+</html>

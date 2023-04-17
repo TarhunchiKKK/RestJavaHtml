@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ввод чисел</title>
+</head>
+<body>
+<form method="GET" action="http://localhost:8080/resultpair"
+      modelAttribute="numbers">
+    <p>
+        <i style="color: firebrick">Все числа не могут одновременно иметь одинаковое значение</i>
+    </p>
+    <label>Число 1:</label>
+    <input type = "number" name = "nums" required placeholder="От -20 до 20"><br />
+    <label>Число 2:</label>
+    <input type = "number" name = "nums" required placeholder="От -20 до 20"><br />
+    <label>Число 3:</label>
+    <input type = "number" name = "nums" required placeholder="От -20 до 20"><br />
+    <label>Число 4:</label>
+    <input type = "number" name = "nums" required placeholder="От -20 до 20"><br />
+    <input type = "submit" value = "Отправить">
+</form>
+<p>
+    <a href="http://localhost:8080/allresultpairs?operation=0&valueToFind=0.0">Предыдущие результаты</a>
+</p>
+</body>
+</html>
+

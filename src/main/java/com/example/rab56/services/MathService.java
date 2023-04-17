@@ -1,0 +1,67 @@
+package com.example.rab56.services;
+
+import com.example.rab56.entity.Numbers;
+import com.example.rab56.entity.ResultPair;
+import com.example.rab56.exceptions.ServerException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+@Service
+@Component
+public class MathService {
+    private CounterService counterService;
+    @Autowired
+    public MathService(CounterService counterService){
+        this.counterService = counterService;
+    }
+
+    //получение выходных данных
+    public ResultPair getResult(Numbers numbers) throws ServerException{
+        counterService.incrementSynchronizedCount();
+        counterService.incrementUnsynchronizedCount();
+
+        int[] nums = numbers.getNumbers();                          //получаем численное представление строк
+        if(nums.length == 0) throw new ServerException("Set is empty");//ничего непришло - отправляем ошибочные выходные данные
+
+        int sum = 0;                                                //суммирование значений
+        for(int i = 0 ; i < nums.length;i++){
+            sum += nums[i];
+        }
+        double middleValue = sum/nums.length;                       //среднее значение
+
+        for(int i = 0 ; i < nums.length - 1;i++){                   //сортировака выбором для нахождения медианы
+            int min = i;
+            for(int j = i + 1; j < nums.length;j++){
+                if(nums[min] > nums[j])
+                    min = j;
+            }
+            if(min != i){
+                int temp = nums[i];
+                nums[i] = nums[min];
+                nums[min] = temp;
+            }
+        }
+        double mediana;
+        if(nums.length % 2 != 0) mediana = nums[nums.length/2];             //медиана для нечетного кол-ва значений
+        else mediana = (nums[nums.length/2] + nums[nums.length/2 - 1])/2;   //медиана для четного кол-ва значений
+
+        return new ResultPair(middleValue, mediana);                        //возврат выходных данных
+    }
+
+    public void resetCounters(){
+        counterService.resetCounters();
+    }
+    public void setCounters(int count){
+        for(int i =0 ; i < count; i++){
+            counterService.incrementSynchronizedCount();
+            counterService.incrementUnsynchronizedCount();
+        }
+    }
+    public Integer getSynchronizedCounter(){
+        return counterService.getSynchronizedCount();
+    }
+    public Integer getUnsynchronizedCounter(){
+        return counterService.getUnsynchronizedCount();
+    }
+}

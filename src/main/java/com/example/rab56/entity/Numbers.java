@@ -9,14 +9,14 @@ public class Numbers {
         numbers = nums;
     }
 
-    public Numbers(BulkParameter bulkParameter){    // инициализация посредством bulk параметра
+   /* public Numbers(BulkParameter bulkParameter){    // инициализация посредством bulk параметра
         numbers = new int[]{
                 bulkParameter.getA(),
                 bulkParameter.getB(),
                 bulkParameter.getC(),
                 bulkParameter.getD()
         };
-    }
+    }*/
 
     public int[] getNumbers(){
         return numbers;

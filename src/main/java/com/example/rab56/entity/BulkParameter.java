@@ -47,6 +47,9 @@ public class BulkParameter {
     public void setD(int d) {
         this.d = d;
     }
+    public Numbers toNumbers(){
+        return new Numbers(new int[]{a, b, c, d});
+    }
 
     @Override
     public boolean equals(Object o) {

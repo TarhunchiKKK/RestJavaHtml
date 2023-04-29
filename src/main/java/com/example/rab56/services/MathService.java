@@ -10,17 +10,8 @@ import org.springframework.stereotype.Service;
 @Service
 @Component
 public class MathService {
-    private CounterService counterService;
-    @Autowired
-    public MathService(CounterService counterService){
-        this.counterService = counterService;
-    }
-
     //получение выходных данных
     public ResultPair getResult(Numbers numbers) throws ServerException{
-        counterService.incrementSynchronizedCount();
-        counterService.incrementUnsynchronizedCount();
-
         int[] nums = numbers.getNumbers();                          //получаем численное представление строк
         if(nums.length == 0) throw new ServerException("Set is empty");//ничего непришло - отправляем ошибочные выходные данные
 
@@ -47,21 +38,5 @@ public class MathService {
         else mediana = (nums[nums.length/2] + nums[nums.length/2 - 1])/2;   //медиана для четного кол-ва значений
 
         return new ResultPair(middleValue, mediana);                        //возврат выходных данных
-    }
-
-    public void resetCounters(){
-        counterService.resetCounters();
-    }
-    public void setCounters(int count){
-        for(int i =0 ; i < count; i++){
-            counterService.incrementSynchronizedCount();
-            counterService.incrementUnsynchronizedCount();
-        }
-    }
-    public Integer getSynchronizedCounter(){
-        return counterService.getSynchronizedCount();
-    }
-    public Integer getUnsynchronizedCounter(){
-        return counterService.getUnsynchronizedCount();
     }
 }

@@ -9,8 +9,13 @@ import java.util.List;
 // сервис для работы с БД
 @Service
 public class RepositoryService {
-    @Autowired
+//    @Autowired
     private Repository repository;
+
+    @Autowired
+    public RepositoryService(Repository repository){
+        this.repository = repository;
+    }
 
     // добавление объекта в БД
     public void save(Numbers numbers, ResultPair resultPair){
